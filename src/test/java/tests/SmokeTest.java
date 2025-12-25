@@ -7,11 +7,11 @@ import pages.GooglePage;
 
 public class SmokeTest extends BaseTest {
 
-    @Test
-    public void googleTitleTest() {
-        GooglePage googlePage = new GooglePage(driver);
-        googlePage.open();
-
-        Assert.assertTrue(googlePage.getTitle().contains("Google"));
-    }
+    @Test(groups = {"smoke"})
+public void googleTitleTest() {
+    GooglePage googlePage = new GooglePage(driver);
+    googlePage.open();
+    Assert.assertTrue(googlePage.getTitle().contains("Google"));
+}
+    
 }
