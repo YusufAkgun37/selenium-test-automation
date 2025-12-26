@@ -66,7 +66,7 @@ mvn test
 ```bash
 mvn test "-DsuiteXmlFile=testng.xml"
 
-🔄 Continuous Integration (CI)
+##🔄 Continuous Integration (CI)
 
 - Tests run automatically on:
 - push to main
