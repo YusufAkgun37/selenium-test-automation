@@ -64,7 +64,17 @@ mvn test
 ### Run tests using TestNG suite
 mvn test "-DsuiteXmlFile=testng.xml"
 
-### Notes
+🔄 Continuous Integration (CI)
 
-Browser closes automatically after each test
-Tests are suitable for CI/CD pipelines
+Tests run automatically on:
+push to main
+pull request to main
+Implemented using GitHub Actions
+CI pipeline executes Maven tests in a headless Chrome environment
+
+📌 Sample Scenarios
+
+Successful login
+Invalid login attempt
+Logout functionality
+Basic smoke test
