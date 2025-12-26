@@ -64,17 +64,17 @@ mvn test
 ### Run tests using TestNG suite
 mvn test "-DsuiteXmlFile=testng.xml"
 
-🔄 Continuous Integration (CI)
+##🔄 Continuous Integration (CI)
 
-Tests run automatically on:
-push to main
-pull request to main
-Implemented using GitHub Actions
-CI pipeline executes Maven tests in a headless Chrome environment
+- Tests run automatically on:
+- push to main
+- pull request to main
+- Implemented using GitHub Actions
+- CI pipeline executes Maven tests in a headless Chrome environment
 
-📌 Sample Scenarios
+##📌 Sample Scenarios
 
-Successful login
-Invalid login attempt
-Logout functionality
-Basic smoke test
+- Successful login
+- Invalid login attempt
+- Logout functionality
+- Basic smoke test
