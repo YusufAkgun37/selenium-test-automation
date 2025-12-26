@@ -60,10 +60,12 @@ selenium-test-automation
 ### Run all tests
 ```bash
 mvn test
+```
 
 ### Run tests using TestNG suite
+```bash
 mvn test "-DsuiteXmlFile=testng.xml"
-
+```
 🔄 Continuous Integration (CI)
 
 Tests run automatically on:
