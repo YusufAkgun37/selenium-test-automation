@@ -1,4 +1,4 @@
-package tests;
+package tests.regression;
 
 import base.BaseTest;
 import org.openqa.selenium.support.ui.ExpectedConditions;

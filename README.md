@@ -1,3 +1,6 @@
+![CI](https://github.com/YusufAkgun37/selenium-test-automation/actions/workflows/maven-test.yml/badge.svg)
+
+
 # Selenium Test Automation Framework
 
 This project is a UI test automation framework built using Java, Selenium WebDriver, TestNG, and Maven.  
