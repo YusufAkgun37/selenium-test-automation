@@ -3,20 +3,25 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
 
-    WebDriver driver;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     private By usernameInput = By.id("username");
     private By passwordInput = By.id("password");
     private By loginButton = By.cssSelector("button[type='submit']");
-    private By logoutButton = By.cssSelector("a.button.secondary.radius");
     private By successMessage = By.id("flash");
-    private By errorMessage = By.id("flash");
+    private By logoutButton = By.cssSelector(".icon-signout");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void open() {
@@ -24,20 +29,24 @@ public class LoginPage {
     }
 
     public void login(String username, String password) {
-        driver.findElement(usernameInput).sendKeys(username);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInput))
+                .sendKeys(username);
+
         driver.findElement(passwordInput).sendKeys(password);
         driver.findElement(loginButton).click();
     }
 
-    public void logout() {
-        driver.findElement(logoutButton).click();
+    public String getSuccessMessage() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage))
+                .getText();
     }
 
-    public String getSuccessMessage() {
-        return driver.findElement(successMessage).getText();
+    public void logout() {
+        wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
     }
 
     public String getErrorMessage() {
-        return driver.findElement(errorMessage).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage))
+                .getText();
     }
 }
