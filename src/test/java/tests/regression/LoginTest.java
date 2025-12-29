@@ -33,7 +33,7 @@ public void negativeLoginTest() {
     );
 }
 
-   @Test(groups = {"regression"})
+@Test(groups = {"regression"})
 public void logoutTest() {
     LoginPage loginPage = new LoginPage(driver);
     loginPage.open();
@@ -41,7 +41,8 @@ public void logoutTest() {
     loginPage.logout();
 
     Assert.assertTrue(
-            loginPage.getErrorMessage().contains("You logged out")
+        loginPage.getLogoutMessage().contains("You logged out")
     );
 }
+
 }

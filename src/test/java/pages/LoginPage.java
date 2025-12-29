@@ -49,4 +49,7 @@ public class LoginPage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage))
                 .getText();
     }
+    public String getLogoutMessage() {
+        return driver.findElement(By.id("flash")).getText();
+    }
 }
