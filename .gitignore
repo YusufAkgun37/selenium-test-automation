@@ -36,7 +36,8 @@ Thumbs.db
 
 # Allure
 allure-results/
-target/allure-results/
-target/allure-report/
+allure-report/
+target/
+.allure/
 
 

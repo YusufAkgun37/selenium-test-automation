@@ -63,16 +63,25 @@
                 <version>3.2.5</version>
                 <configuration>
 
+                <!-- Allure listener -->
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
+                    <!-- Allure listener -->
                     <properties>
                         <property>
                             <name>listener</name>
                             <value>io.qameta.allure.testng.AllureTestNg</value>
                         </property>
                     </properties>
+
+                    <!-- Allure results directory -->
+                    <systemPropertyVariables>
+                    <allure.results.directory>
+                    ${project.build.directory}/allure-results
+                    </allure.results.directory>
+                    </systemPropertyVariables>
 
                 </configuration>
             </plugin>
