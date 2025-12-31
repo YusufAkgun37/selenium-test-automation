@@ -33,3 +33,10 @@ target/
 # OS
 .DS_Store
 Thumbs.db
+
+# Allure
+allure-results/
+target/allure-results/
+target/allure-report/
+
+
