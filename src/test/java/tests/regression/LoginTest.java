@@ -5,6 +5,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.TestDataProvider;
+import io.qameta.allure.Step;
+import io.qameta.allure.Description;
+
 
 
 public class LoginTest extends BaseTest {
@@ -14,27 +17,26 @@ public class LoginTest extends BaseTest {
     dataProvider = "validLoginData",
     dataProviderClass = TestDataProvider.class
 )
+@Description("Valid user should login successfully")
 public void successfulLoginTest(String username, String password) {
 
-    LoginPage loginPage = new LoginPage(driver);
-    loginPage.open();
-    loginPage.login(username, password);
+    loginWithCredentials(username, password);
 
     Assert.assertTrue(
             loginPage.getSuccessMessage().contains("You logged into a secure area")
     );
 }
 
+
 @Test(
     groups = {"regression"},
     dataProvider = "invalidLoginData",
     dataProviderClass = TestDataProvider.class
 )
+@Description("Invalid credentials should show proper error message")
 public void negativeLoginTest(String username, String password) {
 
-    LoginPage loginPage = new LoginPage(driver);
-    loginPage.open();
-    loginPage.login(username, password);
+    loginWithCredentials(username, password);
 
     String errorMessage = loginPage.getErrorMessage();
 
@@ -44,6 +46,15 @@ public void negativeLoginTest(String username, String password) {
         "Unexpected error message: " + errorMessage
     );
 }
+
+@Step("Login with username: {username} and password: {password}")
+public void loginWithCredentials(String username, String password) {
+    loginPage = new LoginPage(driver);
+    loginPage.open();
+    loginPage.login(username, password);
+}
+
+
 
 
 /* 
