@@ -49,7 +49,6 @@ public void negativeLoginTest(String username, String password) {
 
 @Step("Login with username: {username} and password: {password}")
 public void loginWithCredentials(String username, String password) {
-    loginPage = new LoginPage(driver);
     loginPage.open();
     loginPage.login(username, password);
 }
