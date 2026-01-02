@@ -1,0 +1,18 @@
+{
+  "validLogins": [
+    {
+      "username": "tomsmith",
+      "password": "SuperSecretPassword!"
+    }
+  ],
+  "invalidLogins": [
+    {
+      "username": "tomsmith",
+      "password": "wrongPassword"
+    },
+    {
+      "username": "wrongUser",
+      "password": "SuperSecretPassword!"
+    }
+  ]
+}
