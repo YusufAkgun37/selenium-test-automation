@@ -7,9 +7,14 @@ import pages.LoginPage;
 import utils.TestDataProvider;
 import io.qameta.allure.Step;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 
 
+@Feature("Login Functionality")
 public class LoginTest extends BaseTest {
 
 @Test(
@@ -17,7 +22,9 @@ public class LoginTest extends BaseTest {
     dataProvider = "validLoginData",
     dataProviderClass = TestDataProvider.class
 )
-@Description("Valid user should login successfully")
+@Story("Valid user can login successfully")
+@Severity(SeverityLevel.CRITICAL)
+@Description("User logs in with valid username and password")
 public void successfulLoginTest(String username, String password) {
 
     loginWithCredentials(username, password);
@@ -33,7 +40,9 @@ public void successfulLoginTest(String username, String password) {
     dataProvider = "invalidLoginData",
     dataProviderClass = TestDataProvider.class
 )
-@Description("Invalid credentials should show proper error message")
+@Story("Invalid user cannot login")
+@Severity(SeverityLevel.NORMAL)
+@Description("Login attempt with invalid credentials should fail")
 public void negativeLoginTest(String username, String password) {
 
     loginWithCredentials(username, password);
@@ -54,10 +63,10 @@ public void loginWithCredentials(String username, String password) {
 }
 
 
-
-
-/* 
 @Test(groups = {"regression"})
+@Story("Logged in user can logout")
+@Severity(SeverityLevel.MINOR)
+@Description("User logs out and sees logout confirmation message")
 public void logoutTest() {
     LoginPage loginPage = new LoginPage(driver);
     loginPage.open();
@@ -68,5 +77,5 @@ public void logoutTest() {
         loginPage.getLogoutMessage().contains("You logged out")
     );
 }
-*/
+
 }
