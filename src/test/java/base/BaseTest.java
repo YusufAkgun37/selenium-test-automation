@@ -1,18 +1,15 @@
 package base;
 
-import pages.LoginPage;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.testng.ITestResult;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+import pages.LoginPage;
+
 
 public class BaseTest {
 
@@ -38,24 +35,16 @@ public void setup() {
     @AfterMethod
     public void tearDown(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
-            takeScreenshot(result.getName());
+            attachScreenshotToAllure();
         }
         if (driver != null) {
             driver.quit();
         }
     }
 
-    private void takeScreenshot(String testName) {
-        TakesScreenshot ts = (TakesScreenshot) driver;
-        File source = ts.getScreenshotAs(OutputType.FILE);
-
-        File target = new File("target/screenshots/" + testName + ".png");
-
-        try {
-            Files.createDirectories(target.getParentFile().toPath());
-            Files.copy(source.toPath(), target.toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @Attachment(value = "Failure Screenshot", type = "image/png")
+    public byte[] attachScreenshotToAllure() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }
+

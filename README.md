@@ -1,4 +1,11 @@
+## 🚀 CI Status
+
 ![CI](https://github.com/YusufAkgun37/selenium-test-automation/actions/workflows/maven-test.yml/badge.svg)
+
+## 📊 Test Reports
+
+Allure HTML reports are generated automatically in CI and stored as workflow artifacts.
+
 
 
 # Selenium Test Automation Framework
