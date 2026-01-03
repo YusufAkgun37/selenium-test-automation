@@ -53,20 +53,29 @@ The project is designed with **Page Object Model (POM)** principles and fully in
 
 ```
 selenium-test-automation
+├── .github/workflows
+│ └── maven-test.yml
 ├── src
-│   └── test
-│       └── java
-│           ├── base
-│           │   └── BaseTest.java
-│           ├── listeners
-│           │   └── TestListener.java
-│           ├── pages
-│           │   └── LoginPage.java
-│           └── tests
-│               ├── smoke
-│               │   └── SmokeTest.java
-│               └── regression
-│                   └── LoginTest.java
+│ └── test
+│ ├── java
+│ │ ├── base
+│ │ │ └── BaseTest.java
+│ │ ├── listeners
+│ │ │ └── TestListener.java
+│ │ ├── pages
+│ │ │ ├── LoginPage.java
+│ │ │ └── GooglePage.java
+│ │ ├── tests
+│ │ │ ├── smoke
+│ │ │ │ └── SmokeTest.java
+│ │ │ └── regression
+│ │ │ └── LoginTest.java
+│ │ └── utils
+│ │ ├── JsonDataReader.java
+│ │ └── TestDataProvider.java
+│ └── resources
+│ └── testdata
+│ └── loginData.json
 ├── testng.xml
 ├── pom.xml
 └── README.md
