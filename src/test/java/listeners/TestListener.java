@@ -1,6 +1,6 @@
 package listeners;
 
-import io.qameta.allure.Allure; // Bu importu mutlaka ekle
+import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.testng.ITestResult;
 
 import base.BaseTest;
 
-import java.io.ByteArrayInputStream; // Bu importu ekle
+import java.io.ByteArrayInputStream; 
 
 public class TestListener implements ITestListener {
 
