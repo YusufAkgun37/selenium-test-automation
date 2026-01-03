@@ -26,7 +26,6 @@ public class LoginTest extends BaseTest {
 @Severity(SeverityLevel.CRITICAL)
 @Description("User logs in with valid username and password")
 public void successfulLoginTest(String username, String password) {
-Assert.fail("Intentional failure to test Allure screenshot attachment");
 
     loginWithCredentials(username, password);
 
