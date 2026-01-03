@@ -1,90 +1,152 @@
+# Selenium Test Automation Framework
+
+A modern **UI Test Automation Framework** built with **Java, Selenium WebDriver, TestNG, Maven**, and **Allure Reports**.  
+The project is designed with **Page Object Model (POM)** principles and fully integrated with **GitHub Actions CI**.
+
+---
+
 ## 🚀 CI Status
 
 ![CI](https://github.com/YusufAkgun37/selenium-test-automation/actions/workflows/maven-test.yml/badge.svg)
 
-## 📊 Test Reports
+---
 
-Allure HTML reports are generated automatically in CI and stored as workflow artifacts.
+## 📊 Test Reports (Allure)
 
+![Allure](https://img.shields.io/badge/Allure-Report-orange)
+- Allure **HTML reports** are generated automatically in CI
+- Reports are uploaded as **GitHub Actions artifacts**
+- Failed tests include **automatic screenshot attachments** 📸
 
-
-# Selenium Test Automation Framework
-
-This project is a UI test automation framework built using Java, Selenium WebDriver, TestNG, and Maven.  
-The framework follows the Page Object Model (POM) design pattern to ensure clean, maintainable, and scalable test automation.
+**How to view report:**
+1. Open **GitHub → Actions**
+2. Select a workflow run
+3. Download **allure-report** artifact
+4. Open `index.html`
 
 ---
 
-## 🚀 Technologies Used
-- Java
-- Selenium WebDriver
+## 🧠 Key Features
+
+- ✅ Selenium WebDriver (Headless Chrome)
+- ✅ TestNG test management
+- ✅ Page Object Model (POM)
+- ✅ Allure HTML Reporting
+- ✅ Screenshot on test failure (Allure attachment)
+- ✅ GitHub Actions CI integration
+- ✅ Clean & scalable project structure
+
+---
+
+## 🛠 Technologies Used
+
+- Java 17
+- Selenium WebDriver 4
 - TestNG
 - Maven
-- Git & GitHub
+- Allure TestNG
+- GitHub Actions
 
 ---
 
 ## 📁 Project Structure
+
+```
 selenium-test-automation
 ├── src
-│ └── test
-│ └── java
-│ ├── base
-│ │ └── BaseTest.java
-│ ├── pages
-│ │ └── LoginPage.java
-│ └── tests
-│ ├── SmokeTest.java
-│ └── LoginTest.java
+│   └── test
+│       └── java
+│           ├── base
+│           │   └── BaseTest.java
+│           ├── listeners
+│           │   └── TestListener.java
+│           ├── pages
+│           │   └── LoginPage.java
+│           └── tests
+│               ├── smoke
+│               │   └── SmokeTest.java
+│               └── regression
+│                   └── LoginTest.java
 ├── testng.xml
 ├── pom.xml
 └── README.md
+```
 
 ---
 
-## 🧪 Test Scenarios
+## 🧪 Test Suites
 
-### Smoke Tests
-- Verify application is accessible
+### 🔥 Smoke Tests
+- Application availability check
 
-### Regression Tests
+### 🔁 Regression Tests
 - Successful login
-- Invalid login with wrong credentials
+- Invalid login
 - Logout functionality
 
 ---
 
 ## 🧩 Framework Design
+
 - Page Object Model (POM)
-- Explicit waits for stable test execution
-- TestNG groups (smoke, regression)
-- Centralized WebDriver management using BaseTest
+- Centralized WebDriver lifecycle (BaseTest)
+- Listener-based failure handling
+- Screenshot capture on test failure
+- CI-friendly headless execution
 
 ---
 
-## ▶️ How to Run Tests
+## ▶️ How to Run Tests Locally
 
 ### Run all tests
 ```bash
-mvn test
+mvn clean test
 ```
 
-### Run tests using TestNG suite
+### Run using TestNG suite
 ```bash
-mvn test "-DsuiteXmlFile=testng.xml"
+mvn clean test -DsuiteXmlFile=testng.xml
 ```
+
+### Generate Allure report locally
+```bash
+mvn allure:report
+mvn allure:serve
+```
+
+---
 
 ## 🔄 Continuous Integration (CI)
 
-- Tests run automatically on:
-- push to main
-- pull request to main
-- Implemented using GitHub Actions
-- CI pipeline executes Maven tests in a headless Chrome environment
+- Triggered on:
+  - Push to `main`
+  - Pull Request to `main`
+- Runs tests in **Ubuntu + Headless Chrome**
+- Generates Allure report
+- Uploads report as workflow artifact
 
-## 📌 Sample Scenarios
+---
 
-- Successful login
-- Invalid login attempt
-- Logout functionality
-- Basic smoke test
+## 📸 Allure Screenshot Example
+
+- Screenshots are automatically attached for **failed tests**
+- Visible under **Attachments → Screenshot Failure** in Allure
+
+---
+
+## 🎯 Why This Project?
+
+This project demonstrates:
+- Real-world Selenium framework design
+- CI/CD automation knowledge
+- Reporting & debugging best practices
+- Recruiter-friendly, production-style setup
+
+Perfect for **QA Automation / SDET portfolios** 💼
+
+---
+
+## 👤 Author
+
+**Yusuf Akgün**  
+🔗 GitHub: https://github.com/YusufAkgun37
