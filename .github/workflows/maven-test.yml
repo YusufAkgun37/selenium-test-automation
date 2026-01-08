@@ -23,6 +23,19 @@ jobs:
       - name: Run Maven tests
         run: mvn clean test
 
+      - name: Copy Allure environment info
+        if: always()
+        run: |
+          mkdir -p target/allure-results
+          cp src/test/resources/allure/environment.properties target/allure-results/
+
+      - name: Copy Allure metadata
+        if: always()
+        run: |
+          mkdir -p target/allure-results
+          cp src/test/resources/allure/environment.properties target/allure-results/
+          cp src/test/resources/allure/categories.json target/allure-results/
+
       - name: Generate Allure Report
         if: always()
         run: mvn allure:report
