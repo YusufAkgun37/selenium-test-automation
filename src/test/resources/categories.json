@@ -1,26 +1,25 @@
 [
   {
-    "name": "Assertion Failures",
+    "name": "Critical Failures",
     "matchedStatuses": ["failed"],
-    "messageRegex": ".*Assertion.*"
+    "matchedSeverity": ["critical"]
   },
   {
-    "name": "UI Element Not Found",
-    "matchedStatuses": ["broken"],
-    "messageRegex": ".*NoSuchElementException.*"
-  },
-  {
-    "name": "Timeout Errors",
-    "matchedStatuses": ["broken"],
-    "messageRegex": ".*TimeoutException.*"
-  },
-  {
-    "name": "Test Data Issues",
+    "name": "Major Failures",
     "matchedStatuses": ["failed"],
-    "messageRegex": ".*Json.*|.*data.*"
+    "matchedSeverity": ["blocker", "normal"]
   },
   {
-    "name": "Unknown Errors",
+    "name": "Minor Issues",
+    "matchedStatuses": ["failed"],
+    "matchedSeverity": ["minor"]
+  },
+  {
+    "name": "Broken Tests",
     "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Skipped Tests",
+    "matchedStatuses": ["skipped"]
   }
 ]
