@@ -1,17 +1,26 @@
 [
   {
-    "name": "Product Defects",
+    "name": "Assertion Failures",
     "matchedStatuses": ["failed"],
-    "messageRegex": ".*AssertionError.*"
+    "messageRegex": ".*Assertion.*"
+  },
+  {
+    "name": "UI Element Not Found",
+    "matchedStatuses": ["broken"],
+    "messageRegex": ".*NoSuchElementException.*"
+  },
+  {
+    "name": "Timeout Errors",
+    "matchedStatuses": ["broken"],
+    "messageRegex": ".*TimeoutException.*"
   },
   {
     "name": "Test Data Issues",
     "matchedStatuses": ["failed"],
-    "messageRegex": ".*data.*"
+    "messageRegex": ".*Json.*|.*data.*"
   },
   {
-    "name": "Environment Issues",
-    "matchedStatuses": ["broken"],
-    "messageRegex": ".*TimeoutException.*|.*WebDriverException.*"
+    "name": "Unknown Errors",
+    "matchedStatuses": ["broken"]
   }
 ]
