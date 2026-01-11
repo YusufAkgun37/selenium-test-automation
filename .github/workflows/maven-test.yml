@@ -27,8 +27,8 @@ jobs:
         if: always()
         run: |
           mkdir -p target/allure-results
-          cp src/test/resources/allure/environment.properties target/allure-results/
-          cp src/test/resources/allure/categories.json target/allure-results/
+          cp src/test/resources/environment.properties target/allure-results/
+          cp src/test/resources/categories.json target/allure-results/
 
       - name: Generate Allure Report
         if: always()
