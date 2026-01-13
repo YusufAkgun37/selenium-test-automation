@@ -21,7 +21,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Run Maven tests
-        run: mvn clean test
+        run: mvn clean test -Dheadless=true
 
       - name: Copy Allure metadata
         if: always()

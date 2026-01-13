@@ -22,10 +22,14 @@ public class ConfigReader {
     }
 
     public static String getProperty(String key) {
+        String value = System.getProperty(key);
+        if (value != null) {
+            return value;
+        }
         return properties.getProperty(key);
     }
 
     public static boolean getBoolean(String key) {
-        return Boolean.parseBoolean(properties.getProperty(key));
+        return Boolean.parseBoolean(getProperty(key));
     }
 }
