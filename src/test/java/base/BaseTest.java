@@ -13,25 +13,26 @@ import utils.DriverFactory;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected LoginPage loginPage;
 
     public WebDriver getDriver() {
-        return driver;
+        return driver.get();
     }
 
     @BeforeMethod
     public void setup() {
-        driver = DriverFactory.createDriver();
-        driver.get(ConfigReader.getProperty("url"));
+        driver.set(DriverFactory.createDriver());
+        getDriver().get(ConfigReader.getProperty("url"));
 
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
     }
 
     @AfterMethod
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
+        if (getDriver() != null) {
+            getDriver().quit();
+            driver.remove();
         }
     }
 

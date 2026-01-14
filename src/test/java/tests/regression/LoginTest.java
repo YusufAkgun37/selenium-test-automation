@@ -68,7 +68,7 @@ public void loginWithCredentials(String username, String password) {
 @Severity(SeverityLevel.MINOR)
 @Description("User logs out and sees logout confirmation message")
 public void logoutTest() {
-    LoginPage loginPage = new LoginPage(driver);
+    LoginPage loginPage = new LoginPage(getDriver());
     loginPage.open();
     loginPage.login("tomsmith", "SuperSecretPassword!");
     loginPage.logout();

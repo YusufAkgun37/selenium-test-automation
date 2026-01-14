@@ -15,7 +15,7 @@ public class SmokeTest extends BaseTest {
 @Tag("smoke")
 @Test(groups = {"smoke"})
 public void googleTitleTest() {
-    GooglePage googlePage = new GooglePage(driver);
+    GooglePage googlePage = new GooglePage(getDriver());
     googlePage.open();
     Assert.assertTrue(googlePage.getTitle().contains("Google"));
 }
