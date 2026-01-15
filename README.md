@@ -1,51 +1,38 @@
 # Selenium Test Automation Framework
 
-A modern **UI Test Automation Framework** built with **Java, Selenium WebDriver, TestNG, Maven**, and **Allure Reports**.  
-The project is designed with **Page Object Model (POM)** principles and fully integrated with **GitHub Actions CI**.
+A robust, scalable, and enterprise-grade **UI Test Automation Framework** built with **Java, Selenium WebDriver, TestNG, Maven**, and **Allure Reports**.
+This project demonstrates modern test automation patterns suitable for large-scale applications, including **Dockerized Execution**, **Parallel Testing**, and **CI/CD Integration**.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-17-orange" alt="Java">
+  <img src="https://img.shields.io/badge/Selenium-4-green" alt="Selenium">
+  <img src="https://img.shields.io/badge/Docker-Enabled-blue" alt="Docker">
+  <img src="https://github.com/YusufAkgun37/selenium-test-automation/actions/workflows/maven-test.yml/badge.svg" alt="CI Status">
+</p>
 
 ---
 
-## 🚀 CI Status
+## � Key Features
 
-![CI](https://github.com/YusufAkgun37/selenium-test-automation/actions/workflows/maven-test.yml/badge.svg)
-
----
-
-## 📊 Test Reports (Allure)
-
-![Allure](https://img.shields.io/badge/Allure-Report-orange)
-- Allure **HTML reports** are generated automatically in CI
-- Reports are uploaded as **GitHub Actions artifacts**
-- Failed tests include **automatic screenshot attachments** 📸
-
-**How to view report:**
-1. Open **GitHub → Actions**
-2. Select a workflow run
-3. Download **allure-report** artifact
-4. Open `index.html`
+*   **Design Pattern:** Page Object Model (POM) for efficient maintenance.
+*   **Parallel Execution:** Thread-safe execution using `ThreadLocal<WebDriver>`, allowing multiple tests to run simultaneously.
+*   **Docker Support:** Fully containerized environment using `Docker` and `Selenium Grid`.
+*   **Cross-Browser Testing:** Configurable support for Chrome, Firefox, and Headless modes via properties.
+*   **Reporting:** Integrated **Allure Reports** for detailed visualizations and historical trend analysis.
+*   **CI/CD:** Automated pipeline via **GitHub Actions** running on every push/PR.
+*   **Configuration Management:** Centralized control via `config.properties`.
 
 ---
 
-## 🧠 Key Features
+## 🛠 Technology Stack
 
-- ✅ Selenium WebDriver (Headless Chrome)
-- ✅ TestNG test management
-- ✅ Page Object Model (POM)
-- ✅ Allure HTML Reporting
-- ✅ Screenshot on test failure (Allure attachment)
-- ✅ GitHub Actions CI integration
-- ✅ Clean & scalable project structure
-
----
-
-## 🛠 Technologies Used
-
-- Java 17
-- Selenium WebDriver 4
-- TestNG
-- Maven
-- Allure TestNG
-- GitHub Actions
+*   **Language:** Java 17
+*   **Core Library:** Selenium WebDriver 4
+*   **Test Runner:** TestNG
+*   **Build Tool:** Maven
+*   **Containerization:** Docker & Docker Compose
+*   **Reporting:** Allure
+*   **CI/CD:** GitHub Actions
 
 ---
 
@@ -53,109 +40,86 @@ The project is designed with **Page Object Model (POM)** principles and fully in
 
 ```
 selenium-test-automation
-├── .github/workflows
-│ └── maven-test.yml
-├── src
-│ └── test
-│ ├── java
-│ │ ├── base
-│ │ │ └── BaseTest.java
-│ │ ├── listeners
-│ │ │ └── TestListener.java
-│ │ ├── pages
-│ │ │ ├── LoginPage.java
-│ │ │ └── GooglePage.java
-│ │ ├── tests
-│ │ │ ├── smoke
-│ │ │ │ └── SmokeTest.java
-│ │ │ └── regression
-│ │ │ └── LoginTest.java
-│ │ └── utils
-│ │ ├── JsonDataReader.java
-│ │ └── TestDataProvider.java
-│ └── resources
-│ └── testdata
-│ └── loginData.json
-├── testng.xml
-├── pom.xml
-└── README.md
+├── .github/workflows   # CI/CD pipelines
+├── src/test/java
+│   ├── base            # BaseTest with ThreadLocal Driver
+│   ├── pages           # Page Object Classes
+│   ├── tests           # Test Classes (Smoke/Regression)
+│   └── utils           # Utilities (DriverFactory, ConfigReader)
+├── src/test/resources  # Configuration & Test Data
+├── docker-compose.yml  # Selenium Grid Setup
+├── Dockerfile          # Test Runner Container
+└── pom.xml             # Dependencies
 ```
 
 ---
 
-## 🧪 Test Suites
+## ⚙️ Configuration
 
-### 🔥 Smoke Tests
-- Application availability check
+The project is controlled by `src/test/resources/config.properties`. You can easily switch environments or browsers without touching code.
 
-### 🔁 Regression Tests
-- Successful login
-- Invalid login
-- Logout functionality
-
----
-
-## 🧩 Framework Design
-
-- Page Object Model (POM)
-- Centralized WebDriver lifecycle (BaseTest)
-- Listener-based failure handling
-- Screenshot capture on test failure
-- CI-friendly headless execution
+```properties
+browser=chrome
+headless=false
+url=https://the-internet.herokuapp.com/login
+# Grid Configuration
+executor=local       # 'local' or 'grid'
+grid_url=http://localhost:4444
+```
 
 ---
 
-## ▶️ How to Run Tests Locally
+## ▶️ How to Run Tests
 
-### Run all tests
+### 1. Local Execution
+Run tests on your local machine using Maven:
 ```bash
 mvn clean test
 ```
+*Note: This will use the browser installed on your machine.*
 
-### Run using TestNG suite
+### 2. Parallel Execution
+Tests are configured to run in parallel (method level) by default in `testng.xml`.
 ```bash
 mvn clean test -DsuiteXmlFile=testng.xml
 ```
 
-### Generate Allure report locally
+### 3. Docker (Selenium Grid) Execution 🐳
+Run the entire suite in isolated Docker containers:
+
+1.  Start the Grid and Test Runner:
+    ```bash
+    docker-compose up --build
+    ```
+2.  Watch the execution on the **Selenium Grid Dashboard**: `http://localhost:4444`
+3.  Once finished, stop the containers:
+    ```bash
+    docker-compose down
+    ```
+
+### 4. Generate Report
+View the Allure report locally after execution:
 ```bash
-mvn allure:report
 mvn allure:serve
 ```
 
 ---
 
-## 🔄 Continuous Integration (CI)
+## � CI/CD Pipeline
 
-- Triggered on:
-  - Push to `main`
-  - Pull Request to `main`
-- Runs tests in **Ubuntu + Headless Chrome**
-- Generates Allure report
-- Uploads report as workflow artifact
-
----
-
-## 📸 Allure Screenshot Example
-
-- Screenshots are automatically attached for **failed tests**
-- Visible under **Attachments → Screenshot Failure** in Allure
-
----
-
-## 🎯 Why This Project?
-
-This project demonstrates:
-- Real-world Selenium framework design
-- CI/CD automation knowledge
-- Reporting & debugging best practices
-- Recruiter-friendly, production-style setup
-
-Perfect for **QA Automation / SDET portfolios** 💼
+Every commit to `main` triggers a GitHub Actions workflow that:
+1.  Sets up a Linux environment.
+2.  Installs dependencies.
+3.  Runs the full regression suite in Headless Chrome.
+4.  Generates and uploads the Allure Report artifact.
 
 ---
 
 ## 👤 Author
 
-**Yusuf Akgün**  
-🔗 GitHub: https://github.com/YusufAkgun37
+**Yusuf Akgün**
+*   🔗 [GitHub Profile](https://github.com/YusufAkgun37)
+*   💼 [LinkedIn](https://www.linkedin.com/in/yusuf-akgun-37)
+
+---
+*This project is part of my portfolio demonstrating advanced test automation capabilities.*
